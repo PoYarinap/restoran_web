@@ -117,3 +117,27 @@
     
 })(jQuery);
 
+// Google Translate Integration
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+}
+
+function changeLanguage(langCode) {
+    var selectField = document.querySelector("select.goog-te-combo");
+    if (selectField) {
+        selectField.value = langCode;
+        selectField.dispatchEvent(new Event("change"));
+    } else {
+        document.cookie = "googtrans=/en/" + langCode + "; path=/";
+        document.cookie = "googtrans=/en/" + langCode + "; domain=" + window.location.hostname + "; path=/";
+        location.reload();
+    }
+}
+
+// Dynamically load Google Translate and hide banner
+$(document).ready(function() {
+    $('body').append('<div id="google_translate_element" style="display:none;"></div>');
+    $.getScript("https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+    
+    $('<style type="text/css">.goog-te-banner-frame {display:none !important;} body {top: 0px !important;} .goog-tooltip {display: none !important;} .goog-tooltip:hover {display: none !important;} .goog-text-highlight {background-color: transparent !important; border: none !important; box-shadow: none !important;}</style>').appendTo('head');
+});

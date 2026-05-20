@@ -68,6 +68,15 @@
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fa fa-globe"></i> Language
+                            </a>
+                            <div class="dropdown-menu m-0">
+                                <a href="javascript:void(0)" onclick="changeLanguage('id')" class="dropdown-item"><img src="https://flagcdn.com/w20/id.png" alt="ID" style="width: 20px; margin-right: 5px;"> Indonesia</a>
+                                <a href="javascript:void(0)" onclick="changeLanguage('en')" class="dropdown-item"><img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width: 20px; margin-right: 5px;"> English</a>
+                            </div>
+                        </div>
                     </div>
                     <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
@@ -228,6 +237,43 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Google Translate Script -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+        function changeLanguage(langCode) {
+            var selectField = document.querySelector("select.goog-te-combo");
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event("change"));
+            } else {
+                var domain = window.location.hostname;
+                var cookieString = "googtrans=/en/" + langCode + "; path=/";
+                document.cookie = cookieString;
+                if (domain !== "localhost" && domain !== "127.0.0.1" && domain !== "") {
+                    document.cookie = cookieString + "; domain=" + domain;
+                }
+                location.reload();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style type="text/css">
+        iframe.skiptranslate {display:none !important;} 
+        .goog-te-banner-frame {display:none !important;} 
+        body {top: 0px !important;} 
+        html {top: 0px !important;}
+        .goog-tooltip {display: none !important;} 
+        .goog-tooltip:hover {display: none !important;} 
+        .goog-text-highlight {background-color: transparent !important; border: none !important; box-shadow: none !important;}
+        #goog-gt-tt {display: none !important;}
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {display: none !important;}
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {display: none !important;}
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {display: none !important;}
+    </style>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
